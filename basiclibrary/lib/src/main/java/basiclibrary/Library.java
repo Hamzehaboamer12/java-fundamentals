@@ -76,11 +76,32 @@ public class Library {
     }
 
     public static int[] avgArrOfArr(int[][] arr) {
-        int[] newArr = new int[arr.length];
-        for (int index = 0; index < arr.length; index++) {
-            newArr[index] = calculateAverage(arr[index]);
+        int sum = 0;
+        float prevAvg;
+        float avg = 0;
+        int requiredIndex = 0;
+
+
+        for (int i = 0; i < array.length; i++) {
+            // reassigning the variables
+            prevAvg = avg;
+            sum = 0;
+
+            // a loop to get the avg
+            for (int j = 0; j < array[i].length; j++) {
+                sum = sum + array[i][j];
+            }
+            avg = (float) sum / array[i].length;
+
+            // if the new average less than the previous average , replace the index
+            if (avg < prevAvg) {
+                requiredIndex = i;
+            }
+
         }
-        return newArr;
+
+        return array[requiredIndex];
+
 
     }
 
