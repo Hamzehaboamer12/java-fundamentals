@@ -23,10 +23,10 @@ public class Library {
         int[] randomRoll = roll(6);
         boolean findDublicate = containsDuplicates(testArr);
         int avg = calculateAverage(testArr);
-        int[] arrayOfAvg = avgArrOfArr(weeklyMonthTemperatures);
+        int[] avgArrayinsideArray = avgArrayinsideArray(weeklyMonthTemperatures);
         System.out.println("................arrayOfAvg...............");
-        for (int j = 0; j <arrayOfAvg.length ; j++) {
-            System.out.println(arrayOfAvg[j]);
+        for (int j = 0; j <avgArrayinsideArray.length ; j++) {
+            System.out.println(avgArrayinsideArray[j]);
         }
         System.out.println("................Roll................");
 
@@ -75,32 +75,32 @@ public class Library {
         return Math.floorDiv(sum, arr.length);
     }
 
-    public static int[] avgArrOfArr(int[][] arr) {
+    public static int[] avgArrayinsideArray(int[][] arr) {
         int sum = 0;
-        float prevAvg;
+        float firstAvg;
         float avg = 0;
-        int requiredIndex = 0;
+        int Index = 0;
 
 
-        for (int i = 0; i < array.length; i++) {
-            // reassigning the variables
-            prevAvg = avg;
+        for (int i = 0; i < arr.length; i++) {
+
+            firstAvg = avg;
             sum = 0;
 
-            // a loop to get the avg
-            for (int j = 0; j < array[i].length; j++) {
-                sum = sum + array[i][j];
-            }
-            avg = (float) sum / array[i].length;
 
-            // if the new average less than the previous average , replace the index
-            if (avg < prevAvg) {
-                requiredIndex = i;
+            for (int j = 0; j < arr[i].length; j++) {
+                sum = sum + arr[i][j];
+            }
+            avg = (float) sum / arr[i].length;
+
+
+            if (avg < firstAvg) {
+                Index = i;
             }
 
         }
 
-        return array[requiredIndex];
+        return arr[Index];
 
 
     }

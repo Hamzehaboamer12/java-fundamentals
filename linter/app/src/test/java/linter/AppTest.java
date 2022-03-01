@@ -25,20 +25,19 @@ class AppTest {
     }
 
     @Test
-    void tallyTesting() {
+    void Tallying() {
         App classUnderTest = new App();
         List<String> votes = new ArrayList<>();
-        votes.add("Bush");
-        votes.add("Bush");
-        votes.add("Bush");
-        votes.add("Shrub");
-        votes.add("Hedge");
-        votes.add("Shrub");
-        votes.add("Bush");
-        votes.add("Hedge");
-        votes.add("Bush");
+        votes.add("hamzeh");
+        votes.add("hamzeh");
+        votes.add("hamzeh");
+        votes.add("hamzeh");
+        votes.add("ahmad");
+        votes.add("ahmad");
+        votes.add("ahmad");
+        votes.add("noor");
+        votes.add("noor");
 
         String winner = classUnderTest.tally(votes);
-       // assertEquals("Bush received the most votes", winner + " received the most votes", "test failed we will get them next time");
     }
 }

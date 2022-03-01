@@ -25,7 +25,7 @@ public class App {
 
         HashSet<Integer> unique = new HashSet<>();
         HashSet<Integer> temps = new HashSet<>();
-        String stringToBeReturned = "";
+        String stringReturned = "";
 
         int min = arr[0][0];
         int max = arr[0][0];
@@ -43,44 +43,44 @@ public class App {
             temps.add(i);
         }
 
-        stringToBeReturned = stringToBeReturned + "High: " + max + "\n" + "Low: " + min + "\n";
+        stringReturned = stringReturned + "High: " + max + "Low: " + min;
 
         for (Integer temp : temps) {
             if (!unique.contains(temp)) {
-                stringToBeReturned = stringToBeReturned + "Never saw temperature: " + temp + "\n";
+                stringReturned = stringReturned + "temperature: " + temp;
             }
         }
 
-        return stringToBeReturned;
+        return stringReturned;
 
     }
 
-    public String tally(List<String> list) {
+    public String Tallying(List<String> list) {
 
-        HashSet<String> uniques = new HashSet<>(list);
-        HashMap<String, Integer> hashList = new HashMap<>();
-
-        for (String item : uniques) {
-            hashList.put(item, 0);
-        }
-
-        for (String vote : list) {
-            if (hashList.containsKey(vote)) {
-                Integer x = hashList.get(vote);
-                x++;
-                hashList.put(vote, x);
+        HashMap<Integer,String> result = new HashMap<>();
+        int count = 0;
+        int keyBig=0;
+        for (int index =0;index<votes.size();index++){
+            String person = votes.get(index);
+            for (int index1 =0;index1<votes.size();index1++){
+                if (votes.get(index1)==person){
+                    count++;
+                }
             }
-            ;
+            result.put(count,person);
+
+            if(count>keyBig){
+                keyBig=count;
+            }
+            count=0;
+
         }
 
-        int counter = 0;
-        String winner = "none";
-        for (String item : uniques) {
-            if (hashList.get(item) > counter) {
-                counter = hashList.get(item);
-                winner = item;
-            }
-        }
+        System.out.println(result);
+
+        System.out.println();
+        String winner = result.get(keyBig) + "  Won";
+
 
 
         return winner;
@@ -90,7 +90,7 @@ public class App {
 
     public String linter(Path path) {
         int counter = 0;
-        StringBuilder errorLine = new StringBuilder();
+        StringBuilder error= new StringBuilder();
         try {
             File myFile = new File(path.toUri());
             Scanner scanner = new Scanner(myFile);
@@ -99,7 +99,7 @@ public class App {
                 counter++;
                 String data = scanner.nextLine();
                 if (!data.endsWith(";") && !data.endsWith("}") && !data.endsWith("{") && !data.contains("else") && !data.contains("if") && !data.isEmpty() || data.contains("return") && !data.endsWith(";")) {
-                    errorLine.append("Line ").append(counter).append(" : Missing semicolon.\n");
+                    error.append("Line ").append(counter).append(" : Missing semicolon.\n");
                 }
             }
             scanner.close();
@@ -108,7 +108,7 @@ public class App {
         }
 
 
-        return errorLine.toString();
+        return error.toString();
     }
 
 

@@ -33,6 +33,7 @@ class Main {
             }
             System.out.println(time);
         }
+
     }
 
     public static String pluralize(String name, int count) {
