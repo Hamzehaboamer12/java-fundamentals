@@ -11,6 +11,9 @@ public class Review {
         this.author = author ;
         this.stars = stars ;
     }
+    public Review() {
+
+    }
 
     @Override
     public String toString() {

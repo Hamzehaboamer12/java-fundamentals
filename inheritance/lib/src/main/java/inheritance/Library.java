@@ -9,10 +9,10 @@ public class Library {
     public static void main(String[] args) {
 
 
-        Restaurant KFC = new Restaurant("KFC" , "55$");
-        Review reviewTest = new Review("the food very delicious" , "Hamzeh abu amer" , 4);
-        KFC.addReview(reviewTest);
-        System.out.println(KFC);
+//        Restaurant KFC = new Restaurant("KFC" , "55$");
+//        Review reviewTest = new Review("the food very delicious" , "Hamzeh abu amer" , 4);
+//        KFC.addReview(reviewTest);
+//        System.out.println(KFC);
 
 
     }

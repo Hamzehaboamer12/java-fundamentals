@@ -5,6 +5,9 @@ package inheritance;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.DisplayName;
+
+import java.util.ArrayList;
 
 class LibraryTest {
     @Test
@@ -14,21 +17,72 @@ class LibraryTest {
         assertEquals("KFC", KFC.getName());
     }
 
-    @Test
-    void reviewTesting() {
-        Restaurant KFC = new Restaurant("KFC", "$$");
-        Review review1 = new Review("Food was delicious","Hamzeh",4);
+    class addReviewTest {
+        @Test
+        void addTest() {
 
-        KFC.addReview(review1);
+            ArrayList<String> movieList = new ArrayList<>();
+            movieList.add("the GodFather");
+            movieList.add("Scarface");
+            movieList.add("Fight Club");
+            movieList.add("The Revenant");
+            movieList.add("Shutter Island");
 
+            Theater newTheater = new Theater("the Alpha", movieList);
+//            Review review = new Review();
+//            Review review1 = new Review();
+            newTheater.addReview("Theater was good", "Hamzeh", 4);
+            newTheater.addReview("Theater was good", "Hamzeh", 2);
+            newTheater.addMovie("Shutter Island");
+            newTheater.removeMovie("Fight Club");
 
-        assertNotNull(KFC, "Check your class , it returned NULL");
+            assertEquals("the Alpha", newTheater.getTheaterName());
+            assertTrue(newTheater.getMovies().contains("Shutter Island"));
+            assertFalse(newTheater.getMovies().contains("TENET"));
+        }
 
-        assertEquals("[Reviewer : Hamzeh\n" +
-                "Review : Food was delicious\n" +
-                "Rating :  4 stars\n" +
-                "]", KFC.getReviews().toString());
+        // test shop constructor
+        class shopTest {
+            @Test
+            void shopToStringTest() {
+                Shop shopTest = new Shop("PizzaHut", "Not Good ", 4);
+                assertEquals(shopTest.toString(), "the review to PizzaHut not Good ");
+            }
+        }
 
+        // add review to shop test
+        class addReviewShopTest {
+            @Test
+            void addTest() {
+                Shop revTest = new Shop("Popeyes", "Hamzeh", 2);
+                revTest.addReview("l", "Hamzeh", 3);
+                revTest.addReview("n", "Hamzeh", 2);
+                revTest.addReview("Bad", "Hamzeh", 5);
+                assertEquals(revTest.getShopRating(), (4));
+            }
+        }
 
+        class addReviewTheaterTest {
+            @Test
+            void addTest() {
+                ArrayList movies = new ArrayList();
+                movies.add("the GodFather");
+                movies.add("requiem for a dream");
+                Theater revTest = new Theater("Cinema", movies);
+                revTest.addReview("Bad", "hamzeh", 3);
+                revTest.addReview("a", "hamzeh", 5);
+                revTest.addReview("g", "hamzeh", 4);
+                revTest.addMovie("taxi driver");
+                ArrayList<String> y = new ArrayList<>();
+                y.add("the GodFather");
+                y.add("requiem for a dream");
+                y.add("taxi driver");
+                assertEquals(revTest.getMovies(), y);
+            }
+
+        }
     }
 }
+
+
+

@@ -2,7 +2,7 @@ package inheritance;
 
 import java.util.ArrayList;
 
-public class Restaurant {
+public class Restaurant extends Review  {
 
      String name;
      String price;
@@ -12,6 +12,7 @@ public class Restaurant {
 
     // constructor
     public Restaurant(String name , String price) {
+        super();
         this.name = name;
         this.price = price;
 
